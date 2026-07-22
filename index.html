@@ -1,286 +1,467 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
-
-<html class="no-js"> <!--<![endif]-->
-    <head>
-        <title>Sidrah Ramzan - The Tech Copywriter</title>
-
-        <!-- meta -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
-        <!-- stylesheets -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/font_icon/css/pe-icon-7-stroke.css">
-        <link rel="stylesheet" href="assets/font_icon/css/helper.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.css">
-        <link rel="stylesheet" href="assets/css/owl.theme.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-
-        <!-- google fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500|Lato:300,400,700,900,300italic,400italic,700italic,900italic|Raleway:400,200,300,500,100|Titillium+Web:400,200,300italic,300,200italic' rel='stylesheet' type='text/css'>
-
-        <script src="assets/js/modernizr.js"></script>
-
-        <style>
-            .makeorange{
-                color:#FF9000;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidrah Ramzan - Tech Copywriter Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand_orange: '#ea580c', /* Vibrant Hero Orange */
+                        brand_blue: '#2563eb',   /* Electric Blue CTA */
+                        brand_dark: '#0f172a',   /* Slate 900 for high-contrast text */
+                        brand_light: '#f8fafc',  /* Light Gray Background */
+                    },
+                    boxShadow: {
+                        'glow-blue': '0 10px 40px -10px rgba(37, 99, 235, 0.3)',
+                        'glow-orange': '0 10px 40px -10px rgba(234, 88, 12, 0.2)',
+                    }
+                }
             }
-            .orangetable{
-                background-color: #fcf8e3;
-                border: 3px solid #FF9000
+        }
+    </script>
+
+    <style>
+        /* Base typography & Screen Background */
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: theme('colors.brand_light');
+            color: theme('colors.brand_dark');
+            /* Tech dot pattern background for screen */
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        h1, h2, h3, .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Print-specific styling */
+        @media print {
+            @page {
+                margin: 1.5cm;
             }
-            
-        </style>
+            body {
+                background: #ffffff !important;
+                background-image: none !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print, .decorative-blob {
+                display: none !important;
+            }
+            .print-border {
+                border: 1px solid #e5e7eb !important;
+            }
+            .avoid-break {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            a {
+                text-decoration: none !important;
+                color: #0f172a !important;
+            }
+            .print-text-black {
+                color: #000000 !important;
+                -webkit-text-fill-color: #000000 !important;
+                background: none !important;
+            }
+            main {
+                padding: 0 !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen pb-12 relative overflow-x-hidden">
 
-    </head>
-    <body id="body">
-        <!--[if lt IE 7]>
-                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <!-- Decorative Screen Background Elements to remove sterility -->
+    <div class="decorative-blob absolute top-0 left-0 w-96 h-96 bg-brand_blue/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob pointer-events-none z-0 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="decorative-blob absolute top-40 right-0 w-96 h-96 bg-brand_orange/10 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 pointer-events-none z-0 translate-x-1/3"></div>
 
-        <!-- Header area -->
-        <header id="header">
-            <div class="center text-center">
-                <h1 class="bigheadline"> <b>Sidrah Ramzan</b></h1>
-                <h2 class="subheadline makeorange"> <b>Knock Out Your Competition With Stories That Sell!</b></h2>
-                <h3>Copywriter | Web Developer | Content Writer</h3>
+    <!-- Screen-only Action Bar -->
+    <div class="no-print bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-brand_orange animate-pulse"></div>
+                <span class="text-sm font-bold tracking-widest text-gray-800 uppercase font-display">Portfolio Hub</span>
             </div>
-            <div class="bottom">
-                <a data-scroll href="#navigation" class="scrollDown animated pulse" id="scrollToContent"><i class="pe-7s-angle-down-circle pe-va"></i></a>
+            <div class="flex gap-4">
+                <button onclick="window.print()" class="group flex items-center gap-2 bg-brand_blue hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-bold font-display transition-all shadow-md hover:shadow-glow-blue">
+                    <svg class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    Print / Save PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Printable Area / Elevated Canvas -->
+    <main class="max-w-7xl mx-auto px-6 sm:px-10 md:px-12 pt-10 md:pt-16 bg-white shadow-2xl min-h-screen md:my-10 md:rounded-2xl relative z-10 border border-gray-100">
+        
+        <!-- Header Section -->
+        <header class="border-b-[3px] border-brand_dark pb-10 mb-10 avoid-break relative">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-50 border border-orange-100 text-brand_orange text-xs font-bold uppercase tracking-wider mb-6 no-print">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand_orange opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-brand_orange"></span>
+                </span>
+                Available for New Projects
+            </div>
+
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-4 tracking-tighter text-brand_dark font-display leading-tight">
+                Sidrah Ramzan
+            </h1>
+            
+            <p class="text-2xl md:text-3xl font-bold font-display text-gray-800 print-text-black mb-6">
+                Computer Scientist by degree, <br class="hidden md:block"/>
+                <span class="text-brand_orange print-text-black">Copywriter by heart.</span>
+            </p>
+            
+            <p class="text-gray-600 max-w-3xl leading-relaxed text-lg mb-8 font-medium border-l-4 border-brand_orange pl-4">
+                I translate complex 1s and 0s into stories that sell. From post-quantum blockchain platforms to enterprise SaaS, I help tech brands cut through the noise and build undeniable market authority. 
+                <span class="block mt-2 font-bold text-brand_dark font-display">Let your product do the talking.</span>
+            </p>
+
+            <div class="flex flex-wrap gap-4 text-sm text-gray-800 font-semibold no-print">
+                <a href="mailto:sidrahramzan736@gmail.com" class="flex items-center gap-2 hover:bg-brand_blue hover:text-white transition-all bg-white px-5 py-3 rounded-xl border-2 border-gray-100 hover:border-brand_blue shadow-sm hover:shadow-glow-blue group">
+                    <svg class="w-5 h-5 text-brand_blue group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    sidrahramzan736@gmail.com
+                </a>
+                <a href="https://drive.google.com/drive/folders/1YczYsh9kwHQ7koLG2oMItaSG7KMbtgpo?usp=sharing" target="_blank" class="flex items-center gap-2 hover:bg-brand_blue hover:text-white transition-all bg-white px-5 py-3 rounded-xl border-2 border-gray-100 hover:border-brand_blue shadow-sm hover:shadow-glow-blue group">
+                    <svg class="w-5 h-5 text-brand_blue group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    View Testimonials
+                </a>
+            </div>
+
+            <!-- Print-only Contact Info -->
+            <div class="hidden print:block mt-4 text-sm font-bold">
+                Email: sidrahramzan736@gmail.com | Portfolio: sidrahramzan.pages.dev
             </div>
         </header>
 
-        <!-- Navigation area -->
-        <section id="navigation">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="logo">
-                            <a data-scroll href="#body" class="logo-text">Sidrah Ramzan</a></div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="nav">
-                            <a href="#" data-placement="bottom" title="Menu" class="menu" data-toggle="dropdown"><i class="pe-7s-menu"></i></a>
-                             <div class="dropdown-menu">
-                                 <div class="arrow-up"></div>
-                                 <ul>
-                                     <li><a data-scroll href="#body">Home <i class="pe-7s-home"></i></a><span class="menu-effect"></span></li>
-                                     <li><a data-scroll href="#services">Services <i class="pe-7s-config"></i></a><span class="menu-effect"></span></li>
-                                     <li><a data-scroll href="#portfolio">Portfolio <i class="pe-7s-glasses"></i></a><span class="menu-effect"></span></li>
-                                     <li><a data-scroll href="#testimonial">Testimonials <i class="pe-7s-comment"></i><span class="menu-effect"></span></a></li>
-                                     <li><a data-scroll href="https://sidrahramzan.pages.dev/CV/" target="_blank">View My CV <i class="pe-7s-pen"></i></a><span class="menu-effect"></span></li>
-                                     <li><a data-scroll href="#about">About <i class="pe-7s-user"></i></a><span class="menu-effect"></span></li>
-                                     <li><a data-scroll href="#contact">Contact <i class="pe-7s-help1"></i></a><span class="menu-effect"></span></li>
-                                 </ul>
-                             </div>
-                        </div>
-                    </div>
+        <div class="mb-8 avoid-break">
+            <h2 class="text-3xl md:text-4xl font-extrabold font-display text-brand_dark mb-3 flex items-center gap-3 tracking-tight">
+                <svg class="w-8 h-8 text-brand_orange no-print" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002 2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                The Work Directory
+            </h2>
+            <p class="text-lg text-gray-500 font-medium">No fluff. Just click a folder to see how I turn tech jargon into laypeople's terms.</p>
+        </div>
 
-                </div>
-            </div>            
-        </section>
-        
-        <!-- Content Area -->
-        <!-- services section -->
+        <!-- Portfolio Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 pb-16">
 
-        <section id="services" class="service-area">
-            <div class="container">
-                <h2 class="block_title">Services</h2>
-                <div class="row">
-                    <div class="col-sm-3 orangetable">
-                        <i class="pe-7s-light pe-dj pe-va"></i>
-                                <h3>Copywriting</h3>
-                                <p style="text-align: justify;">Let’s face it; tech content can get boring pretty fast and put your reader to sleep. But you know what keeps the readers intrigued? Stories!! And by keeping them intrigued and hitting their pain points, I will create a sales copy that sells water to the fish. I can help you with email campaigns, landing pages, website content, product descriptions, and social media copywriting.</p>
-                     </div>
-                     <div class="col-sm-3 orangetable">
-                        <i class="pe-7s-monitor pe-dj pe-va"></i>
-                                <h3>Content Writing</h3>
-                                <p style="text-align: justify;">You need to educate the readers to build your authority, and what better way to do it than writing blog posts, articles, case studies, and business proposals. <br>To build your authority and thought leadership, you need to educate your readers like a professional, and what is a better way to do it than publishing high-quality content...and that's exactly where I can help.</p>
-                     </div>
-                     <div class="col-sm-3 orangetable">
-                        <i class="pe-7s-edit pe-dj pe-va"></i>
-                        <h3>Proofreading</h3>
-                        <p>With my proofreading services, I will fix your content flaws by making it flow naturally. I do that by switching on my Grammar Nazi mode which tracks down any awkward sentences, fluffy content that adds no value, and grammatical mistakes that can be a deal-breaker. I work my magic and you are left with content that is so on-point, it could give Howard Hill a run for his money.
-                        </p>
-                    </div>
-                         <div class="col-sm-3 orangetable">
-                            <i class="pe-7s-config pe-dj pe-va"></i>
-                                <h3>Content Planning</h3>
-                                <p>Content is a valuable asset of your website and managing it effectively is crucial for your website’s growth. I have worked as a content strategist for a leading real estate tech company and for a B2B service. As a content strategist, I keep in mind your business goals and user intent to plan, develop, and govern content that is helpful, clear, and relevant.</p></div>
-                        </div> 
-                    
+            <!-- Category Card: Landing Pages -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Landing Pages</h3>
+                    <a href="https://drive.google.com/drive/folders/17kXN-xhygcpOxLRwdOxsPR_isvfruzGW?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
                 </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">High-conversion layouts for B2B and Web3 audiences.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">ARMchain</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Blockchain</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Kangeroo Quest</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Gaming / Web3</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">Ali Shah Designs</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Graphic Design</span>
+                    </li>
+                </ul>
             </div>
-        </section><!-- services -->
 
-
-        <!-- Portfolio Area -->
-
-        <section id="portfolio" class="portfolio-area">
-            <div class="container">
-                <h2 class="block_title">My Works</h2>
-                <div class="row port cs-style-3 orangetable">
-                    <iframe src="https://drive.google.com/embeddedfolderview?id=1PE7M8niZFB1lGBPDVwdw2aJU62EVycmy#grid" width="100%" height="500" frameborder="0"></iframe>
+            <!-- Category Card: Social Media Strategy -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Social Media</h3>
+                    <a href="https://drive.google.com/drive/folders/1qnpWkBurpRupGefeLLKubKeue5JAJiHH?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
                 </div>
-            </div><!-- container -->
-        </section><!-- portfolio -->
-<!-- why me? -->
-
-<section id="whyme" class="whyme-area">
-    <div class="container">
-        <h2 class="block_title">Why Do You Need Me?</h2>
-        <div class="row" style="text-align:center; font-size:16px;">
-            <p>You've got a great product and a bright tech idea that can truly revolutionize thousands of lives.</p> 
-             Oh, the thrill of it!
-             <p>But here is a fact: <b>In today's world, not every best idea is a winner. </b> <br>
-             And what you need is to cut through the noise and build a brand image where you can let your product do all the talking!
-             But to do that, you have to persuade people to listen to you. Guess what? That’s where I step in (takes a bow).
-            <br>
-            I know that sounds cliché, but here's a secret:</p>
-            <mark><a class="makeorange" style="font-size:larger">I got a superpower!</a> </mark>
-            <p>As a Computer Science graduate, I am not only aware of how 1s and 0s work but I also love to stay up-to-date with the latest news regarding tech. 
-            And that gives me my <a class="makeorange">SUPERPOWER</a>. 
-            <p>You see, being both a copywriter and a tech graduate, 
-            I can make your complex products and services sound like a nursery rhymes. So your readers end up saying,</p>
-            "aha! This is what I need…take my money, please!"
-        
-            <p>Here's What I Do For You:</p>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-4 orangetable">
-                        <h3>Bridge the Gap</h3>
-                        <p>Between your product and your target audience, I use my tech degree and copywriting expertise to create concise and valuable content.</p>
-                     </div>
-                     <div class="col-sm-4 orangetable">
-                         <h3>Adopt Brand Voice</h3>
-                         <p>Whether it's eccentric and fun or formal/authoritative, I can write flawlessly in any tone that resonates with your brand persona.</p>
-                         </div>
-                         <div class="col-sm-4 orangetable">
-                             <h3> Boost Your Growth Rate</h3>
-                             <p>By doing detailed research about the target audience and extracting their pain point, I create a persuading copy that hits the right spot like a bull’s eye.</p>
-                             </div>
-              </div>
-        </div>
-        
-        <p>Whether you are just starting out or are an established tech firm looking to up your conversion game- I can help you with all your copy needs.</p>
-        </div>
-    </div>
-</section><!-- why me? -->
-
-        <!-- Testimonial Area -->
-
-        <section id="testimonial" class="testimonial-area">
-            <div class="container">
-                <h2 class="block_title">Testimonials</h2>
-                <div class="row">
-                    <div class="col-xs-12">
-                    </div>
-                    <div id="testimonial-container" class="col-xs-12">
-                        <div class="testimonila-block">
-                            <img src="assets/images/testimonial.jpg" alt="clients" class="selfshot">
-                            <p>You have described yourself in a very professional manner. I stand witness to the flawless work you are sure to perform for anyone who needs your services. Strongly recommended!</p>
-                            <strong>Mansoor Shaukat</strong>
-                            <br>
-                        </div>
-
-                        <div class="testimonila-block">
-                            <img src="assets/images/testimonial2.jpg" alt="clients" class="selfshot">
-                            <p>Sidrah Ramzan really came through for me. I needed a project to  be done quickly, and I needed it to be top notch! She exceeded my expectations. I won’t use anyone else from here on out!</p>
-                            <strong>Kendra Rickert</strong>
-                            <br>
-                        </div>
-                        
-                        <div class="testimonila-block">
-                            <img src="assets/images/testimonial3.jpg" alt="clients" class="selfshot">
-                            <p>Sidrah is a wonderful copywriter - she takes time to understand the nature of the task then comes up with brilliant ideas to get started with. The best part is where she takes constructive feedback and applies it  accordingly.
-                                Very well-done Sidrah, looking forward to collaborating on more high-quality content!</p>
-                            <strong>Abdullah Malik</strong>
-                            <br>
-                        </div>
-
-                        <div class="testimonila-block">
-                            <img src="assets/images/testimonial4.jpg" alt="clients" class="selfshot">
-                            <p>If you're looking for a great professional, Sidrah is the right person for you. Sidrah is very professional and her writing skills are great. She'll deliver your work on time looking at every detail. I would definitely recommend that you hire her!</p>
-                            <strong>Erand Xhelilaj</strong>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- container -->
-        </section><!-- testimonial -->
-
-<!-- about -->
-
-<section id="about" class="service-area">
-    <div class="container">
-        <h2 class="block_title">About Me</h2>
-        <div class="row">
-            <div class="col-md-12 text-center fh5co-heading">
-			    <h2>Oh Wow, you made it this far? Care to meet me? </h2>
-			    <div class="col-md-8">
-			        <p style="text-align:justify; font-size:16px">
-			            Hi, I am Sidrah Ramzan, a Computer Scientist by degree and a copywriter by heart. I have always loved words, been friends with them, but never really thought much of it until I ended up in my undergrad course and started noticing this: <br> <br>
-			            <b class="makeorange">Although coding was not my forte, explaining how it works was where I shined. </b> <br> <br>
-			            And then a writer was born. I started off as a freelance writer and focused on one niche, i.e., TECH. Here, I turned tech jargon into laypeople's terms…which is exactly what has landed me the post of <b class="makeorange">Chief Editor</b> at <b class="makeorange">Maximum Tech</b>. <br><br>
-			            Of course, I didn’t start like this; had my fair share of junior/ mid-level jobs as a copywriter. But you see, where others struggled to explain the nitty-gritty of their product, I could easily make non-technical clients understand it. <br><br>
-			            And that is exactly what I have done for over 8 years. I have helped B2B companies, software vendors, and SaaS startups; you name it, by crafting content that is a sure-fire crowd-pleaser.
-			        </p>
-			        </div>
-                    <div class = "col-md-4">
-			        <img style = "height:400px" src = "assets/images/Me.jpg">
-			        </div>
-        </div>
-    </div>
-</section><!-- about -->
-
-        <!-- Contact Area -->
-
-        <section id="contact" class="mapWrap">
-            <div id="contact-area">
-                <div class="container">
-                    <h2 class="block_title">That's All Folks</h2>
-                    <div class="row">
-                        <div class="col-md-12" style="text-align:center;">
-                            <h2  class="makeorange">Why Are You Still Scrolling?</h2>
-                            <h4>Ready to work with a tech copywriter who is keen to sky-rocket your conversion rate? Let's get your product/service to new heights!</h>
-	                        
-                                <h2><a href="mailto:sidrahramzan736@gmail.com"><button type="submit" class="btn medium makeorange">Hire Me!</button></a></h2>
-                                <br>
-                                <ul class="scoialinks">
-                                    <li class="social-icons"><a class="facebook" href="https://www.facebook.com/TheTechCopywriter/"></a></li>
-                                    <li class="social-icons"><a class="twitter" href="https://twitter.com/sidrah751995"></a></li>
-                                    <li class="social-icons"><a class="linkedin" href="https://www.linkedin.com/in/sidrah-ramzan/"></a></li>
-                                </ul>
-                            
-                            </div>
-                        </div>
-                </div><!-- container -->
-            </div>    
-        <!-- Footer Area -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <p class="copyright">© Copyright 2020 <a href="https://www.sidrahramzan.com" target="_blank" class="makeorange">Sidrah Ramzan </a>| All Rights Reserved.</p>
-                    </div>
-                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">Beyond posting: community architecture and retention.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">ARMUP</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Exchange</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Kangeroo Coin</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Meme / Web3</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">QAYAD</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">PropTech</span>
+                    </li>
+                </ul>
             </div>
-        </footer>
 
-        <!-- Necessery scripts -->
-        <script src="assets/js/jquery-2.1.3.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-        <script src="assets/js/jquery.actual.min.js"></script>
-        <script src="assets/js/smooth-scroll.js"></script>
-        <script src="assets/js/owl.carousel.js"></script>
-        <script src="assets/js/script.js"></script>
+            <!-- Category Card: Sales Copy -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Sales Copy</h3>
+                    <a href="https://drive.google.com/drive/folders/14GpP0YSxfs7tAJ4-g72WxBBmp3_zBiOW?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">B2B and B2C copy focused on objection handling & USPs.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Origami Studios</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">B2B Dev</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Bamboo Bold</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Eco-friendly</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">The Timeless Beauty</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Retail</span>
+                    </li>
+                </ul>
+            </div>
 
-    </body>
+            <!-- Category Card: Website Content -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Website Content</h3>
+                    <a href="https://drive.google.com/drive/folders/14GpP0YSxfs7tAJ4-g72WxBBmp3_zBiOW?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">Strategic site architecture and SEO-driven narratives.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">S&F Concrete</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Construction</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Maloom App</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Marketplace</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">Dev Proposal</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Web Dev</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category Card: Product Descriptions -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Product Desc.</h3>
+                    <a href="https://drive.google.com/drive/folders/1rt4KNy-UvREsTQvDfwUSI_98Xqxexx7o?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">E-commerce copy balancing emotion and technical durability.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">CBD Atomizer</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Health Tech</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Trampoline Springs</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Outdoor</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">Merrytune Carrier</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Parenting</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category Card: Case Studies -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Case Studies</h3>
+                    <a href="https://drive.google.com/drive/folders/1rt4KNy-UvREsTQvDfwUSI_98Xqxexx7o?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">Problem-solution-outcome operational frameworks.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Fruitapeel</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Food Mfg.</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">UniPrint / Alectra</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">IT & Energy</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category Card: Video Scripts -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Video Scripts</h3>
+                    <a href="https://drive.google.com/drive/folders/1rt4KNy-UvREsTQvDfwUSI_98Xqxexx7o?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">Problem-solution storyboards for reels, explainers & ads.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Easy2Employ</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">HR Tech</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">CI vs. HCI Infrastructure</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Enterprise IT</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">Crypto 101: Fiat</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Fintech</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category Card: Product Reviews -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Product Reviews</h3>
+                    <a href="https://drive.google.com/drive/folders/1rt4KNy-UvREsTQvDfwUSI_98Xqxexx7o?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">Objective evaluations prioritizing user trust.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">NJ Diet Review</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Health</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">SaferVPN</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Cybersecurity</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">AirVPN</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Cybersecurity</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category Card: In-depth Reviews -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">In-depth Audits</h3>
+                    <a href="https://drive.google.com/drive/folders/1UaIQbckxZcaowVn4vK7QyeH0QwObB1xK?usp=drive_link" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">Research-heavy long-form software evaluations.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">GanttPro</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">SaaS</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">PackageX Mailroom</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Logistics</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">Zoom App</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Telecom</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category Card: Listicles -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Listicles</h3>
+                    <a href="https://drive.google.com/drive/folders/1y1mlVqXl30IJ-6poqpSrFNXaD3a25yrq?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">Highly readable formats balancing skimmable structure with insights.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">5 Things: AI Bots</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Auto / AI</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">5 Ways: Relationships</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Marketing</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">7 Reasons: Custom Dev</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Web Dev</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Category Card: Guides -->
+            <div class="group border-2 border-gray-100 hover:border-brand_blue rounded-xl p-5 avoid-break print-border bg-gray-50/50 hover:bg-white shadow-sm hover:shadow-glow-blue transition-all duration-300 relative overflow-hidden flex flex-col">
+                <div class="absolute left-0 top-0 w-1.5 h-full bg-brand_orange scale-y-0 group-hover:scale-y-100 transition-transform origin-top no-print duration-300"></div>
+                
+                <div class="flex flex-wrap justify-between items-start gap-2 mb-3">
+                    <h3 class="text-xl font-bold font-display text-brand_dark group-hover:text-brand_blue transition-colors">Guides</h3>
+                    <a href="https://drive.google.com/drive/folders/14GpP0YSxfs7tAJ4-g72WxBBmp3_zBiOW?usp=sharing" target="_blank" class="text-brand_blue no-print text-xs flex items-center gap-1 font-bold bg-blue-50 group-hover:bg-brand_blue group-hover:text-white px-3 py-1.5 rounded-md transition-all shadow-sm whitespace-nowrap">
+                        View Folder <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 font-medium flex-grow leading-snug">Authority-building pillars serving as educational roadmaps.</p>
+                <ul class="space-y-2.5">
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Best CPU for Dota 2</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Hardware</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px] border-b border-gray-200 pb-2">
+                        <span class="font-semibold text-gray-900 pr-2">Guide to MSPs</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">IT Ops</span>
+                    </li>
+                    <li class="flex justify-between items-center text-[13px]">
+                        <span class="font-semibold text-gray-900 pr-2">Blockchain Tech</span>
+                        <span class="text-[9px] font-bold text-brand_orange uppercase tracking-wider bg-orange-100/50 px-2 py-0.5 rounded border border-orange-200 whitespace-nowrap">Fintech</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+    
+    <!-- Screen-only Footer -->
+    <footer class="no-print mt-12 pb-8 text-center text-sm text-gray-500 font-medium">
+        <p>&copy; 2026 Sidrah Ramzan. All rights reserved.</p>
+    </footer>
+</body>
 </html>
