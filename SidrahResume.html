@@ -1,451 +1,530 @@
+
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidrah Ramzan | Senior Technical Writer & Content Strategist</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#f0f7ff',
-                            100: '#e0effe',
-                            500: '#0284c7',
-                            600: '#0265d2',
-                            700: '#034ea2',
-                            900: '#0c2a52',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @media print {
-            body {
-                background-color: #ffffff !important;
-                color: #000000 !important;
-                font-size: 11pt;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .print-shadow-none {
-                box-shadow: none !important;
-            }
-            .print-border-none {
-                border: none !important;
-            }
-            .page-break-inside-avoid {
-                break-inside: avoid;
-            }
-            .resume-card {
-                background: transparent !important;
-                border: none !important;
-                padding: 0 !important;
-            }
-            a {
-                text-decoration: underline;
-                color: #000 !important;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidrah Ramzan | Senior Technical Writer &amp; Content Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ================= BRAND TOKENS (from the LinkedIn banner) ================= */
+  :root{ --violet-raw:141,123,216; }
+  html[data-theme="light"]{
+    --bg:#f6f5f9;
+    --surface:#ffffff;
+    --surface-2:#faf9fc;
+    --ink:#1c1b22;
+    --ink-strong:#121118;
+    --ink-muted:#5d5c68;
+    --ink-faint:#8b8a95;
+    --violet:#6f5bd0;
+    --violet-dim:rgba(111,91,208,0.35);
+    --violet-faint:rgba(111,91,208,0.08);
+    --line:rgba(28,27,34,0.12);
+    --line-soft:rgba(28,27,34,0.08);
+    --grid-fine:rgba(28,27,34,0.045);
+    --grid-major:rgba(28,27,34,0.075);
+    --shadow:0 20px 60px -30px rgba(28,27,34,0.25);
+  }
+  html[data-theme="dark"]{
+    --bg:#17171c;
+    --surface:#202028;
+    --surface-2:#24242d;
+    --ink:#ececef;
+    --ink-strong:#ffffff;
+    --ink-muted:#a2a2ab;
+    --ink-faint:#66666f;
+    --violet:#8d7bd8;
+    --violet-dim:rgba(141,123,216,0.35);
+    --violet-faint:rgba(141,123,216,0.12);
+    --line:rgba(255,255,255,0.12);
+    --line-soft:rgba(255,255,255,0.08);
+    --grid-fine:rgba(255,255,255,0.045);
+    --grid-major:rgba(255,255,255,0.08);
+    --shadow:0 20px 60px -30px rgba(0,0,0,0.7);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'IBM Plex Sans',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    min-height:100vh;
+    padding-bottom:56px;
+    transition:background .25s ease,color .25s ease;
+    background-image:
+      linear-gradient(var(--grid-fine) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-fine) 1px, transparent 1px),
+      linear-gradient(var(--grid-major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
+    background-size:24px 24px,24px 24px,96px 96px,96px 96px;
+  }
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'IBM Plex Mono',monospace}
+
+  /* ================= top bar ================= */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb, var(--surface) 85%, transparent);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+    margin-bottom:28px;
+  }
+  .topbar-inner{
+    max-width:1060px;margin:0 auto;
+    padding:10px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .brand-mark{display:flex;align-items:center;gap:10px}
+  .brand-sq{
+    width:30px;height:30px;border-radius:7px;
+    background:var(--violet);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Orbitron',sans-serif;font-size:11px;font-weight:600;letter-spacing:.04em;
+  }
+  .brand-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px}
+  .status-pill{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--violet);
+    background:var(--violet-faint);
+    border:1px solid var(--violet-dim);
+    border-radius:999px;
+    padding:4px 10px;
+  }
+  .topbar-actions{display:flex;align-items:center;gap:10px}
+  .btn{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:13px;font-weight:500;
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--ink);
+    background:var(--violet-faint);
+    border:1px solid var(--violet-dim);
+    border-radius:7px;
+    padding:8px 14px;
+    cursor:pointer;
+    transition:background .15s ease,border-color .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{background:rgba(var(--violet-raw),0.2);border-color:var(--violet)}
+  .btn:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+  .btn svg{width:15px;height:15px}
+  .btn.icon-only{padding:8px}
+  html[data-theme="light"] .icon-sun{display:none}
+  html[data-theme="dark"] .icon-moon{display:none}
+
+  /* ================= resume card ================= */
+  main{max-width:1060px;margin:0 auto;padding:0 20px}
+  .resume-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    padding:36px clamp(20px,4vw,44px);
+    transition:background .25s ease,border-color .25s ease;
+  }
+
+  /* ---- header section ---- */
+  .r-header{
+    border-bottom:1px solid var(--line);
+    padding-bottom:26px;margin-bottom:28px;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:22px;
+  }
+  h1.name{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(24px,3vw,32px);
+    font-weight:600;letter-spacing:.03em;line-height:1.15;
+    color:var(--ink-strong);
+  }
+  .identity{display:flex;align-items:center;gap:11px;margin-top:9px;flex-wrap:wrap}
+  .divider-dot{width:5px;height:5px;border-radius:50%;background:var(--violet);flex-shrink:0}
+  .role{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ink-muted);
+  }
+  .location{
+    display:flex;align-items:center;gap:6px;
+    font-size:13px;color:var(--ink-muted);margin-top:10px;
+  }
+  .location svg{width:14px;height:14px;color:var(--violet)}
+  .contact-col{display:flex;flex-direction:column;gap:9px;font-size:13.5px}
+  .contact-col a{display:flex;align-items:center;gap:8px;color:var(--ink-muted);transition:color .15s ease}
+  .contact-col a:hover{color:var(--violet)}
+  .contact-col svg{width:15px;height:15px;color:var(--violet);flex-shrink:0}
+
+  /* ---- two columns ---- */
+  .cols{display:grid;grid-template-columns:1fr;gap:36px}
+  @media (min-width:960px){ .cols{grid-template-columns:2fr 1fr} }
+  .col-main > section + section{margin-top:30px}
+  .col-side > section + section{margin-top:26px}
+
+  h2.sec{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;font-weight:500;
+    letter-spacing:.2em;text-transform:uppercase;
+    color:var(--violet);
+    margin-bottom:12px;
+    display:flex;align-items:center;gap:10px;
+  }
+  h2.sec::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+
+  .summary{font-size:14.5px;line-height:1.65;color:var(--ink)}
+  .summary strong{font-weight:600}
+
+  /* ---- jobs ---- */
+  .job{
+    border-left:2px solid var(--violet-dim);
+    padding:2px 0 2px 16px;
+    margin-bottom:22px;
+    break-inside:avoid;page-break-inside:avoid;
+  }
+  .job:last-child{margin-bottom:0}
+  .job-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px}
+  .job h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15.5px;font-weight:600;color:var(--ink-strong);
+  }
+  .job h3 .loc{font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:400;color:var(--ink-faint)}
+  .dates{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;font-weight:500;letter-spacing:.06em;
+    color:var(--violet);
+    background:var(--violet-faint);
+    border:1px solid var(--violet-dim);
+    border-radius:999px;
+    padding:3px 10px;
+    white-space:nowrap;
+  }
+  .job .title{font-size:13.5px;font-weight:600;color:var(--ink);margin-top:5px}
+  .job ul{margin:8px 0 0 16px;font-size:13.5px;line-height:1.6;color:var(--ink-muted)}
+  .job li{margin-bottom:5px}
+  .job li::marker{color:var(--violet)}
+
+  /* ---- client cards ---- */
+  .client{
+    background:var(--surface-2);
+    border:1px solid var(--line-soft);
+    border-radius:10px;
+    padding:13px 15px;
+    margin-bottom:10px;
+    break-inside:avoid;page-break-inside:avoid;
+  }
+  .client h3{font-size:13.5px;font-weight:600;color:var(--ink-strong)}
+  .client h3 .loc{font-weight:400;color:var(--ink-faint)}
+  .client p{font-size:12.5px;line-height:1.6;color:var(--ink-muted);margin-top:4px}
+
+  /* ---- sidebar ---- */
+  .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;font-weight:500;letter-spacing:.04em;
+    color:var(--ink);
+    background:var(--violet-faint);
+    border:1px solid var(--violet-dim);
+    border-radius:5px;
+    padding:4px 9px;
+  }
+  .side-text{font-size:12.5px;line-height:1.7;color:var(--ink-muted)}
+  .edu h3{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--ink-strong)}
+  .edu .school{font-size:12.5px;color:var(--violet);font-weight:500;margin-top:2px}
+  .edu .years{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-faint);margin-top:2px}
+  .side-list{list-style:none;font-size:12.5px;line-height:1.6;color:var(--ink-muted)}
+  .side-list li{display:flex;gap:8px;margin-bottom:7px}
+  .side-list .mark{color:var(--violet);flex-shrink:0}
+  .side-list strong{color:var(--ink);font-weight:600}
+
+  .rev-foot{
+    margin-top:30px;padding-top:16px;border-top:1px solid var(--line-soft);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-faint);
+    text-align:right;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+
+  /* ================= print ================= */
+  @media print{
+    @page{margin:1.3cm}
+    body{background:#fff !important;background-image:none !important;color:#000;font-size:11pt;padding-bottom:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .topbar,.no-print,.rev-foot{display:none !important}
+    main{padding:0;max-width:none}
+    .resume-card{border:none;box-shadow:none;border-radius:0;padding:0}
+    .job,.client{break-inside:avoid;page-break-inside:avoid}
+    a{text-decoration:underline;color:#000 !important}
+  }
+</style>
 </head>
-<body class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 min-h-screen pb-12">
+<body>
 
-    <!-- Top Floating Toolbar -->
-    <header class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 no-print py-3 px-4 mb-8">
-        <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-4">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded-lg bg-brand-600 text-white flex items-center justify-center font-bold font-display">SR</div>
-                <span class="font-bold text-slate-900 dark:text-white font-display">Sidrah Ramzan</span>
-                <span class="text-xs px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-medium">Available for Hire</span>
-            </div>
-            
-            <div class="flex items-center gap-3">
-                <!-- Theme Toggle -->
-                <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors" title="Toggle Theme">
-                    <svg id="theme-icon-dark" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z"></path></svg>
-                    <svg id="theme-icon-light" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                </button>
+  <!-- ============ top bar ============ -->
+  <header class="topbar no-print">
+    <div class="topbar-inner">
+      <div class="brand-mark">
+        <div class="brand-sq" aria-hidden="true">SR</div>
+        <span class="brand-name">Sidrah Ramzan</span>
+        <span class="status-pill">Available for hire</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn icon-only" onclick="toggleTheme()" title="Toggle light / dark mode" aria-label="Toggle light or dark mode">
+          <svg class="icon-moon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <svg class="icon-sun" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </button>
+        <button class="btn" onclick="window.print()">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Print / Download PDF
+        </button>
+      </div>
+    </div>
+  </header>
 
-                <!-- Print Button -->
-                <button onclick="window.print()" class="flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-medium px-4 py-2 rounded-lg transition-colors shadow-sm text-sm">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-                    Print / Download PDF
-                </button>
-            </div>
+  <main>
+    <div class="resume-card">
+
+      <!-- ============ header ============ -->
+      <section class="r-header">
+        <div>
+          <h1 class="name">Sidrah Ramzan</h1>
+          <div class="identity">
+            <span class="divider-dot" aria-hidden="true"></span>
+            <span class="role">Senior Technical Writer &amp; Content Strategist</span>
+          </div>
+          <p class="location">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Karachi, Pakistan (Open to Global Remote Roles)
+          </p>
         </div>
-    </header>
 
-    <!-- Main Container -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6">
-        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl dark:shadow-2xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-10 transition-colors resume-card print-shadow-none">
-            
-            <!-- HEADER SECTION -->
-            <section class="border-b border-slate-200 dark:border-slate-800 pb-8 mb-8">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div>
-                        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display uppercase">
-                            Sidrah Ramzan
-                        </h1>
-                        <p class="text-lg sm:text-xl font-semibold text-brand-600 dark:text-brand-500 mt-1">
-                            Senior Technical Writer & Content Strategist
-                        </p>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-2 flex items-center gap-1.5">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            Karachi, Pakistan (Open to Global Remote Roles)
-                        </p>
-                    </div>
+        <div class="contact-col">
+          <a href="mailto:sidrahramzan736@gmail.com">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            sidrahramzan736@gmail.com
+          </a>
+          <a href="tel:+923317030096">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            +92 331 7030096
+          </a>
+          <a href="https://sidrahramzan.pages.dev" target="_blank" rel="noopener">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            sidrahramzan.pages.dev
+          </a>
+          <a href="https://linkedin.com/in/sidrah-ramzan" target="_blank" rel="noopener">
+            <svg fill="currentColor" viewBox="0 0 24 24" style="color:var(--violet)" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            linkedin.com/in/sidrah-ramzan
+          </a>
+        </div>
+      </section>
 
-                    <!-- Contact Details Pills -->
-                    <div class="flex flex-col gap-2.5 text-sm">
-                        <a href="mailto:sidrahramzan736@gmail.com" class="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">
-                            <svg class="w-4 h-4 text-brand-600 dark:text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            sidrahramzan736@gmail.com
-                        </a>
-                        <a href="tel:+923317030096" class="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">
-                            <svg class="w-4 h-4 text-brand-600 dark:text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                            +92 331 7030096
-                        </a>
-                        <a href="https://sidrahramzan.pages.dev" target="_blank" class="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">
-                            <svg class="w-4 h-4 text-brand-600 dark:text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-                            sidrahramzan.pages.dev
-                        </a>
-                        <a href="https://linkedin.com/in/sidrah-ramzan" target="_blank" class="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors">
-                            <svg class="w-4 h-4 text-brand-600 dark:text-brand-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            linkedin.com/in/sidrah-ramzan
-                        </a>
-                    </div>
-                </div>
-            </section>
+      <!-- ============ two columns ============ -->
+      <div class="cols">
 
-            <!-- TWO COLUMN LAYOUT -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                
-                <!-- MAIN CONTENT COLUMN (Left 8 cols) -->
-                <div class="lg:col-span-8 space-y-8">
-                    
-                    <!-- EXECUTIVE SUMMARY -->
-                    <section>
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-500 mb-3 font-display">
-                            About Me
-                        </h2>
-                        <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-justify">
-                            Senior Technical Content Strategist with <strong>8+ years of experience</strong> creating technical documentation, developer content, and SEO-driven marketing assets for SaaS, AI, blockchain, and enterprise technology companies. Adept at simplifying complex technologies into clear, user-focused content that supports product adoption, customer education, and business growth.
-                        </p>
-                    </section>
+        <!-- ==== main column ==== -->
+        <div class="col-main">
 
-                    <!-- WORK EXPERIENCE -->
-                    <section class="space-y-6">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-500 font-display">
-                            Professional Experience
-                        </h2>
+          <section>
+            <h2 class="sec">About Me</h2>
+            <p class="summary">
+              Senior Technical Content Strategist with <strong>8+ years of experience</strong> creating technical documentation, developer content, and SEO-driven marketing assets for SaaS, AI, blockchain, and enterprise technology companies. Adept at simplifying complex technologies into clear, user-focused content that supports product adoption, customer education, and business growth.
+            </p>
+          </section>
 
-                        <!-- Job 1 -->
-                        <div class="border-l-2 border-brand-500/30 dark:border-brand-500/20 pl-4 py-1 space-y-2 page-break-inside-avoid">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">
-                                    DHRP <span class="text-xs font-normal text-slate-500">| Melbourne, Australia (Remote)</span>
-                                </h3>
-                                <span class="text-xs font-semibold text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-950/60 px-2.5 py-1 rounded-full w-fit mt-1 sm:mt-0">
-                                    Jan 2025 – Present
-                                </span>
-                            </div>
-                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                                Senior Web3 Technical Writer & Content Strategist
-                            </p>
-                            <ul class="list-disc list-outside ml-4 text-sm text-slate-600 dark:text-slate-400 space-y-1.5 leading-relaxed">
-                                <li>Lead technical content strategy for blockchain, AI, SaaS, and digital asset custody products, producing documentation, whitepapers, product pages, blogs, newsletters, and developer resources.</li>
-                                <li>Create clear documentation covering MPC wallets, DeFi, smart contracts, Layer-2 scaling, cross-chain interoperability, enterprise security, and blockchain infrastructure while collaborating with product managers and engineers.</li>
-                                <li>Develop SEO, AEO, and GEO content strategies, support product launches with go-to-market content, and leverage AI-assisted workflows to improve content quality and production efficiency.</li>
-                            </ul>
-                        </div>
+          <section>
+            <h2 class="sec">Professional Experience</h2>
 
-                        <!-- Job 2 -->
-                        <div class="border-l-2 border-brand-500/30 dark:border-brand-500/20 pl-4 py-1 space-y-2 page-break-inside-avoid">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">
-                                    Safa Gold Marketing <span class="text-xs font-normal text-slate-500">| Islamabad, Pakistan</span>
-                                </h3>
-                                <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full w-fit mt-1 sm:mt-0">
-                                    Mar 2024 – Jan 2025
-                                </span>
-                            </div>
-                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                                Senior Copywriter & Campaign Strategist
-                            </p>
-                            <ul class="list-disc list-outside ml-4 text-sm text-slate-600 dark:text-slate-400 space-y-1.5 leading-relaxed">
-                                <li>Created website copy, landing pages, brochures, and campaign assets for technology-focused real estate projects.</li>
-                                <li>Partnered with engineering, design, sales, and marketing teams to deliver technically accurate and customer-focused communications.</li>
-                                <li>Performed audience research, competitor analysis, and keyword research to strengthen campaign performance, lead generation, and brand positioning.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Job 3 -->
-                        <div class="border-l-2 border-brand-500/30 dark:border-brand-500/20 pl-4 py-1 space-y-2 page-break-inside-avoid">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">
-                                    DevAndGo | Crawlbase <span class="text-xs font-normal text-slate-500">| Remote</span>
-                                </h3>
-                                <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full w-fit mt-1 sm:mt-0">
-                                    Jul 2022 – Oct 2023
-                                </span>
-                            </div>
-                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                                Lead Technical Content Writer
-                            </p>
-                            <ul class="list-disc list-outside ml-4 text-sm text-slate-600 dark:text-slate-400 space-y-1.5 leading-relaxed">
-                                <li>Led technical documentation for a developer-focused web scraping platform, producing API documentation, SDK guides, tutorials, release notes, and knowledge base content.</li>
-                                <li>Simplified APIs, automation workflows, proxy networks, and large-scale data extraction concepts into developer-friendly documentation.</li>
-                                <li>Worked closely with engineers and product managers while creating SEO-driven educational content that improved onboarding, product adoption, and organic traffic.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Job 4 -->
-                        <div class="border-l-2 border-brand-500/30 dark:border-brand-500/20 pl-4 py-1 space-y-2 page-break-inside-avoid">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">
-                                    Petals Green Global LLC <span class="text-xs font-normal text-slate-500">| Saudi Arabia (Remote)</span>
-                                </h3>
-                                <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full w-fit mt-1 sm:mt-0">
-                                    Oct 2020 – Jan 2022
-                                </span>
-                            </div>
-                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                                Lead Content Strategist
-                            </p>
-                            <ul class="list-disc list-outside ml-4 text-sm text-slate-600 dark:text-slate-400 space-y-1.5 leading-relaxed">
-                                <li>Produced SEO-focused website content, whitepapers, case studies, blogs, and marketing collateral for SaaS and B2B technology companies.</li>
-                                <li>Developed editorial strategies aligned with keyword research, customer journeys, and business objectives.</li>
-                                <li>Collaborated with developers, designers, and marketing teams to explain software products, cloud technologies, APIs, and enterprise solutions.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Job 5 -->
-                        <div class="border-l-2 border-brand-500/30 dark:border-brand-500/20 pl-4 py-1 space-y-2 page-break-inside-avoid">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between">
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">
-                                    Qayad Al-Bari Group <span class="text-xs font-normal text-slate-500">| Islamabad, Pakistan</span>
-                                </h3>
-                                <span class="text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full w-fit mt-1 sm:mt-0">
-                                    May 2019 – Oct 2020
-                                </span>
-                            </div>
-                            <p class="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                                Lead Content Strategist
-                            </p>
-                            <ul class="list-disc list-outside ml-4 text-sm text-slate-600 dark:text-slate-400 space-y-1.5 leading-relaxed">
-                                <li>Prepared business proposals, executive presentations, technical reports, and feasibility documents supporting strategic partnerships.</li>
-                                <li>Developed website content, corporate messaging, sales collateral, and executive communications for leadership teams.</li>
-                                <li>Performed editorial quality assurance and translated complex business and technical information into clear customer-facing documentation.</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <!-- SELECTED CONSULTING & FREELANCE CLIENTS -->
-                    <section class="space-y-4 page-break-inside-avoid">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-500 font-display">
-                            Selected Consulting & Freelance Clients
-                        </h2>
-
-                        <div class="grid grid-cols-1 gap-3">
-                            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
-                                <h3 class="font-semibold text-slate-900 dark:text-white text-sm">TekBits <span class="font-normal text-slate-500">(United Kingdom)</span></h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                                    Produced long-form technical content covering decentralized infrastructure (DePIN), self-sovereign identity (SSI), blockchain interoperability, privacy-preserving technologies, zero-knowledge ecosystems, and emerging Web3 innovations for developer and enterprise audiences.
-                                </p>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
-                                <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Maximum Tech <span class="font-normal text-slate-500">(Bulgaria)</span></h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                                    Created SEO-focused SaaS content, technical blogs, case studies, product pages, and thought leadership articles supporting lead generation and product marketing initiatives.
-                                </p>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
-                                <h3 class="font-semibold text-slate-900 dark:text-white text-sm">All That SaaS <span class="font-normal text-slate-500">(Pakistan)</span></h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                                    Authored technical reviews, cloud computing articles, API comparisons, database technology guides, backend infrastructure content, and software evaluation resources for engineering audiences.
-                                </p>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
-                                <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Digital Hub Sol <span class="font-normal text-slate-500">(UAE)</span></h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                                    Developed website copy, SaaS landing pages, email campaigns, blog content, and social media messaging supporting B2B software marketing initiatives.
-                                </p>
-                            </div>
-
-                            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
-                                <h3 class="font-semibold text-slate-900 dark:text-white text-sm">Resilience Behavioral Health & Forrest Behavioral Health</h3>
-                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-                                    Created SEO-optimized healthcare content focused on mental health, addiction recovery, telehealth services, and behavioral healthcare while adhering to EEAT content principles.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
-
-                </div>
-
-                <!-- SIDEBAR COLUMN (Right 4 cols) -->
-                <div class="lg:col-span-4 space-y-8">
-                    
-                    <!-- CORE COMPETENCIES -->
-                    <section class="page-break-inside-avoid">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-500 mb-3 font-display">
-                            Core Competencies
-                        </h2>
-                        <div class="flex flex-wrap gap-1.5">
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Technical Writing</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Knowledge Base</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">User Guides</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Product Documentation</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Website Copywriting</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Landing Pages</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Product Messaging</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">SEO Copywriting</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Technical SEO</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">AEO</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">GEO</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Keyword Research</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Content Strategy</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Content Marketing</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Whitepapers</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Case Studies</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Thought Leadership</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">SaaS</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Artificial Intelligence</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Generative AI</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Blockchain</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Web3</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Cybersecurity</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">Cloud Computing</span>
-                            <span class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs px-2.5 py-1 rounded-md border border-slate-200 dark:border-slate-700 font-medium">UX Writing</span>
-                        </div>
-                    </section>
-
-                    <!-- TOOLS & PLATFORMS -->
-                    <section class="page-break-inside-avoid">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-500 mb-3 font-display">
-                            Tools & Platforms
-                        </h2>
-                        <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
-                            ChatGPT &bull; Claude &bull; Gemini &bull; Perplexity AI &bull; Google AI Studio &bull; HubSpot &bull; SEMrush &bull; Google Analytics &bull; Google Search Console &bull; WordPress &bull; Notion &bull; Jira &bull; Markdown &bull; GitHub &bull; Canva &bull; Figma &bull; Google Workspace &bull; Microsoft Office
-                        </p>
-                    </section>
-
-                    <!-- INDUSTRIES -->
-                    <section class="page-break-inside-avoid">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-500 mb-3 font-display">
-                            Industries
-                        </h2>
-                        <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
-                            B2B SaaS &bull; Artificial Intelligence &bull; Blockchain &bull; Web3 &bull; Cryptocurrency &bull; Digital Asset Custody &bull; Cloud Computing &bull; Cybersecurity &bull; Developer Tools &bull; APIs &bull; Enterprise Software &bull; FinTech
-                        </p>
-                    </section>
-
-                    <!-- EDUCATION -->
-                    <section class="page-break-inside-avoid">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-500 mb-3 font-display">
-                            Education
-                        </h2>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-slate-900 dark:text-white text-sm">BS in Computer Science</h3>
-                            <p class="text-xs text-brand-600 dark:text-brand-400 font-medium">Air University, Islamabad</p>
-                            <p class="text-xs text-slate-500">2013 – 2017</p>
-                        </div>
-                    </section>
-
-                    <!-- PROFESSIONAL CERTIFICATIONS -->
-                    <section class="page-break-inside-avoid">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-500 mb-3 font-display">
-                            Certifications
-                        </h2>
-                        <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400">
-                            <li class="flex items-start gap-2">
-                                <span class="text-brand-500 mt-0.5">&bull;</span>
-                                <div><strong class="text-slate-800 dark:text-slate-200">SEO Fundamentals</strong> &ndash; SEMrush Academy</div>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-brand-500 mt-0.5">&bull;</span>
-                                <div><strong class="text-slate-800 dark:text-slate-200">Content Marketing</strong> &ndash; HubSpot Academy</div>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-brand-500 mt-0.5">&bull;</span>
-                                <div><strong class="text-slate-800 dark:text-slate-200">Inbound Marketing</strong> &ndash; HubSpot Academy</div>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-brand-500 mt-0.5">&bull;</span>
-                                <div><strong class="text-slate-800 dark:text-slate-200">Web Development</strong> &ndash; Cambridge Authority</div>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <!-- ADDITIONAL QUALIFICATIONS -->
-                    <section class="page-break-inside-avoid">
-                        <h2 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-500 mb-3 font-display">
-                            Key Highlights
-                        </h2>
-                        <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                            <li class="flex items-start gap-2">
-                                <span class="text-brand-500 mt-0.5">&check;</span>
-                                Experienced in collaborating with cross-functional remote teams (Engineering, PMs, UX, Marketing).
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-brand-500 mt-0.5">&check;</span>
-                                Strong technical background in APIs, developer tooling, cloud platforms, and Web3 infrastructure.
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-brand-500 mt-0.5">&check;</span>
-                                Bridge the gap between highly technical concepts and digestible user content.
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-brand-500 mt-0.5">&check;</span>
-                                Available full-time for remote roles across global time zones.
-                            </li>
-                        </ul>
-                    </section>
-
-                </div>
-
+            <div class="job">
+              <div class="job-top">
+                <h3>DHRP <span class="loc">| Melbourne, Australia (Remote)</span></h3>
+                <span class="dates">Jan 2025 – Present</span>
+              </div>
+              <p class="title">Senior Web3 Technical Writer &amp; Content Strategist</p>
+              <ul>
+                <li>Lead technical content strategy for blockchain, AI, SaaS, and digital asset custody products, producing documentation, whitepapers, product pages, blogs, newsletters, and developer resources.</li>
+                <li>Create clear documentation covering MPC wallets, DeFi, smart contracts, Layer-2 scaling, cross-chain interoperability, enterprise security, and blockchain infrastructure while collaborating with product managers and engineers.</li>
+                <li>Develop SEO, AEO, and GEO content strategies, support product launches with go-to-market content, and leverage AI-assisted workflows to improve content quality and production efficiency.</li>
+              </ul>
             </div>
+
+            <div class="job">
+              <div class="job-top">
+                <h3>Safa Gold Marketing <span class="loc">| Islamabad, Pakistan</span></h3>
+                <span class="dates">Mar 2024 – Jan 2025</span>
+              </div>
+              <p class="title">Senior Copywriter &amp; Campaign Strategist</p>
+              <ul>
+                <li>Created website copy, landing pages, brochures, and campaign assets for technology-focused real estate projects.</li>
+                <li>Partnered with engineering, design, sales, and marketing teams to deliver technically accurate and customer-focused communications.</li>
+                <li>Performed audience research, competitor analysis, and keyword research to strengthen campaign performance, lead generation, and brand positioning.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-top">
+                <h3>DevAndGo | Crawlbase <span class="loc">| Remote</span></h3>
+                <span class="dates">Jul 2022 – Oct 2023</span>
+              </div>
+              <p class="title">Lead Technical Content Writer</p>
+              <ul>
+                <li>Led technical documentation for a developer-focused web scraping platform, producing API documentation, SDK guides, tutorials, release notes, and knowledge base content.</li>
+                <li>Simplified APIs, automation workflows, proxy networks, and large-scale data extraction concepts into developer-friendly documentation.</li>
+                <li>Worked closely with engineers and product managers while creating SEO-driven educational content that improved onboarding, product adoption, and organic traffic.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-top">
+                <h3>Petals Green Global LLC <span class="loc">| Saudi Arabia (Remote)</span></h3>
+                <span class="dates">Oct 2020 – Jan 2022</span>
+              </div>
+              <p class="title">Lead Content Strategist</p>
+              <ul>
+                <li>Produced SEO-focused website content, whitepapers, case studies, blogs, and marketing collateral for SaaS and B2B technology companies.</li>
+                <li>Developed editorial strategies aligned with keyword research, customer journeys, and business objectives.</li>
+                <li>Collaborated with developers, designers, and marketing teams to explain software products, cloud technologies, APIs, and enterprise solutions.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-top">
+                <h3>Qayad Al-Bari Group <span class="loc">| Islamabad, Pakistan</span></h3>
+                <span class="dates">May 2019 – Oct 2020</span>
+              </div>
+              <p class="title">Lead Content Strategist</p>
+              <ul>
+                <li>Prepared business proposals, executive presentations, technical reports, and feasibility documents supporting strategic partnerships.</li>
+                <li>Developed website content, corporate messaging, sales collateral, and executive communications for leadership teams.</li>
+                <li>Performed editorial quality assurance and translated complex business and technical information into clear customer-facing documentation.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="sec">Selected Consulting &amp; Freelance Clients</h2>
+
+            <div class="client">
+              <h3>TekBits <span class="loc">(United Kingdom)</span></h3>
+              <p>Produced long-form technical content covering decentralized infrastructure (DePIN), self-sovereign identity (SSI), blockchain interoperability, privacy-preserving technologies, zero-knowledge ecosystems, and emerging Web3 innovations for developer and enterprise audiences.</p>
+            </div>
+            <div class="client">
+              <h3>Maximum Tech <span class="loc">(Bulgaria)</span></h3>
+              <p>Created SEO-focused SaaS content, technical blogs, case studies, product pages, and thought leadership articles supporting lead generation and product marketing initiatives.</p>
+            </div>
+            <div class="client">
+              <h3>All That SaaS <span class="loc">(Pakistan)</span></h3>
+              <p>Authored technical reviews, cloud computing articles, API comparisons, database technology guides, backend infrastructure content, and software evaluation resources for engineering audiences.</p>
+            </div>
+            <div class="client">
+              <h3>Digital Hub Sol <span class="loc">(UAE)</span></h3>
+              <p>Developed website copy, SaaS landing pages, email campaigns, blog content, and social media messaging supporting B2B software marketing initiatives.</p>
+            </div>
+            <div class="client">
+              <h3>Resilience Behavioral Health &amp; Forrest Behavioral Health</h3>
+              <p>Created SEO-optimized healthcare content focused on mental health, addiction recovery, telehealth services, and behavioral healthcare while adhering to EEAT content principles.</p>
+            </div>
+          </section>
 
         </div>
-    </main>
 
-    <script>
-        function toggleDarkMode() {
-            const html = document.documentElement;
-            const darkIcon = document.getElementById('theme-icon-dark');
-            const lightIcon = document.getElementById('theme-icon-light');
-            
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                html.classList.add('light');
-                darkIcon.classList.add('hidden');
-                lightIcon.classList.remove('hidden');
-            } else {
-                html.classList.remove('light');
-                html.classList.add('dark');
-                lightIcon.classList.add('hidden');
-                darkIcon.classList.remove('hidden');
-            }
-        }
-    </script>
+        <!-- ==== sidebar column ==== -->
+        <div class="col-side">
+
+          <section>
+            <h2 class="sec">Core Competencies</h2>
+            <div class="tags">
+              <span class="tag">Technical Writing</span>
+              <span class="tag">Knowledge Base</span>
+              <span class="tag">User Guides</span>
+              <span class="tag">Product Documentation</span>
+              <span class="tag">Website Copywriting</span>
+              <span class="tag">Landing Pages</span>
+              <span class="tag">Product Messaging</span>
+              <span class="tag">SEO Copywriting</span>
+              <span class="tag">Technical SEO</span>
+              <span class="tag">AEO</span>
+              <span class="tag">GEO</span>
+              <span class="tag">Keyword Research</span>
+              <span class="tag">Content Strategy</span>
+              <span class="tag">Content Marketing</span>
+              <span class="tag">Whitepapers</span>
+              <span class="tag">Case Studies</span>
+              <span class="tag">Thought Leadership</span>
+              <span class="tag">SaaS</span>
+              <span class="tag">Artificial Intelligence</span>
+              <span class="tag">Generative AI</span>
+              <span class="tag">Blockchain</span>
+              <span class="tag">Web3</span>
+              <span class="tag">Cybersecurity</span>
+              <span class="tag">Cloud Computing</span>
+              <span class="tag">UX Writing</span>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="sec">Tools &amp; Platforms</h2>
+            <p class="side-text">ChatGPT &bull; Claude &bull; Gemini &bull; Perplexity AI &bull; Google AI Studio &bull; HubSpot &bull; SEMrush &bull; Google Analytics &bull; Google Search Console &bull; WordPress &bull; Notion &bull; Jira &bull; Markdown &bull; GitHub &bull; Canva &bull; Figma &bull; Google Workspace &bull; Microsoft Office</p>
+          </section>
+
+          <section>
+            <h2 class="sec">Industries</h2>
+            <p class="side-text">B2B SaaS &bull; Artificial Intelligence &bull; Blockchain &bull; Web3 &bull; Cryptocurrency &bull; Digital Asset Custody &bull; Cloud Computing &bull; Cybersecurity &bull; Developer Tools &bull; APIs &bull; Enterprise Software &bull; FinTech</p>
+          </section>
+
+          <section class="edu">
+            <h2 class="sec">Education</h2>
+            <h3>BS in Computer Science</h3>
+            <p class="school">Air University, Islamabad</p>
+            <p class="years">2013 – 2017</p>
+          </section>
+
+          <section>
+            <h2 class="sec">Certifications</h2>
+            <ul class="side-list">
+              <li><span class="mark">&bull;</span><span><strong>SEO Fundamentals</strong> – SEMrush Academy</span></li>
+              <li><span class="mark">&bull;</span><span><strong>Content Marketing</strong> – HubSpot Academy</span></li>
+              <li><span class="mark">&bull;</span><span><strong>Inbound Marketing</strong> – HubSpot Academy</span></li>
+              <li><span class="mark">&bull;</span><span><strong>Web Development</strong> – Cambridge Authority</span></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="sec">Key Highlights</h2>
+            <ul class="side-list">
+              <li><span class="mark">&check;</span><span>Experienced in collaborating with cross-functional remote teams (Engineering, PMs, UX, Marketing).</span></li>
+              <li><span class="mark">&check;</span><span>Strong technical background in APIs, developer tooling, cloud platforms, and Web3 infrastructure.</span></li>
+              <li><span class="mark">&check;</span><span>Bridge the gap between highly technical concepts and digestible user content.</span></li>
+              <li><span class="mark">&check;</span><span>Available full-time for remote roles across global time zones.</span></li>
+            </ul>
+          </section>
+
+        </div>
+      </div>
+
+      <div class="rev-foot">REV 05 · SCALE 1:1 · GRID 24</div>
+    </div>
+  </main>
+
+<script>
+  // Theme: light by default, saved preference restored when storage is available.
+  // Uses the same key as the portfolio page so the choice carries across both.
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    try{ localStorage.setItem('sr-theme', t); }catch(e){ /* storage unavailable — ignore */ }
+  }
+  function toggleTheme(){
+    var cur = document.documentElement.getAttribute('data-theme');
+    applyTheme(cur === 'dark' ? 'light' : 'dark');
+  }
+  (function(){
+    var saved = null;
+    try{ saved = localStorage.getItem('sr-theme'); }catch(e){}
+    if(saved === 'dark' || saved === 'light'){
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  })();
+</script>
 </body>
 </html>
